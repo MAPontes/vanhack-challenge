@@ -1,10 +1,26 @@
 stages:
   - compile
-  - test
-  - deploy
+  - package
+  - provision
 jobs:
   include:
+      # This job is responsible for compiling the code
     - stage: compile
       script: echo "Compiling code..."
+      # This job is responsible for running the unit tests
     - stage: compile
       script: echo "Running unit tests..."
+      # This job is responsible for running code inspection
+    - stage: compile
+      script: echo "Running code inspection..."
+
+      # Here we move from compile stage to package stage
+      # This job is responsible for packing and uploading the artifact
+    - stage: package
+      script: echo "Packing and uploading the artifact..."
+
+
+      # Here we move from package stage to provision stage
+    - stage: provision
+      script: echo "Provisioning and testing infrastructure..."
+
