@@ -50,19 +50,27 @@ jobs:
       # From now on we go through our CD pipeline
       # This job is responsible for provisioning the development environment
     - stage: provision dev
-      script: echo "Provisioning development environment..."
+      script: 
+        - echo "Fetching artifact..."
+        - echo "Provisioning development environment..."
 
       # Here we move from provision dev stage to functional tests stage
       # This job is responsible for running functional tests
     - stage: functional tests
-      script: echo "Running functional tests..."
+      script:
+        - echo "Running functional tests..."
+        - echo "Promoting artifact..."
 
       # Here we move from functional tests stage to provision staging stage
       # This job is responsible for running
     - stage: provision staging
-      script: echo "Provisioning development environment..."
+      script: 
+        - echo "Fetching artifact..."
+        - echo "Provisioning staging environment..."
 
       # Here we move from provision staging stage to acceptance tests stage
       # This job is responsible for running acceptance tests
     - stage: acceptance tests
-      script: echo "Running acceptance tests..."
+      script: 
+        - echo "Running acceptance tests..."
+        - echo "Promoting artifact..."
