@@ -1,7 +1,15 @@
 stages:
   - compile
   - package
-  - provision
+  - infra test
+  - provision dev
+  - functional tests
+  - provision staging
+  - accpetance tests
+  - provision production
+  - sanity check
+
+
 jobs:
   include:
       # This job is responsible for compiling the code
@@ -19,8 +27,27 @@ jobs:
     - stage: package
       script: echo "Packing and uploading the artifact..."
 
-
       # Here we move from package stage to provision stage
     - stage: provision
       script: echo "Provisioning and testing infrastructure..."
 
+
+      # From now on we go through our CD pipeline
+      # This job is responsible for provisioning the development environment
+    - stage: provision dev
+      script: echo "Provisioning development environment..."
+
+      # Here we move from provision dev stage to functional tests stage
+      # This job is responsible for running functional tests
+    - stage: functional tests
+      script: echo "Running functional tests..."
+
+      # Here we move from functional tests stage to provision staging stage
+      # This job is responsible for running
+    - stage: provision staging
+      script: echo "Provisioning development environment..."
+
+      # Here we move from provision staging stage to acceptance tests stage
+      # This job is responsible for running acceptance tests
+    - stage: acceptance tests
+      script: echo "Running acceptance tests"
