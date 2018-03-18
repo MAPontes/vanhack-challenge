@@ -1,0 +1,10 @@
+stages:
+  - compile
+  - test
+  - deploy
+jobs:
+  include:
+    - stage: compile
+      script: echo "Compiling code..."
+    - stage: compile
+      script: echo "Running unit tests..."
